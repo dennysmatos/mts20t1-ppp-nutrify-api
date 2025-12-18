@@ -7,5 +7,3 @@ const auth = require('../middlewares/auth');
 router.get('/', auth, progressController.getDaily);
 
 module.exports = router;
-
-

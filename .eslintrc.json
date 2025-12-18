@@ -2,22 +2,59 @@
   "env": {
     "node": true,
     "es2021": true,
-    "jest": true
+    "jest": true,
+    "mocha": true
   },
   "extends": ["eslint:recommended", "prettier"],
+  "plugins": ["prettier"],
   "parserOptions": {
-    "ecmaVersion": 12,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "rules": {
-    "no-unused-vars": "warn",
-    "no-console": "off",
+    "prettier/prettier": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "no-console": [
+      "warn",
+      {
+        "allow": ["warn", "error"]
+      }
+    ],
     "no-prototype-builtins": "warn",
-    "no-unsafe-finally": "warn",
-    "no-empty": ["warn", { "allowEmptyCatch": true }],
+    "no-unsafe-finally": "error",
+    "no-empty": [
+      "warn",
+      {
+        "allowEmptyCatch": true
+      }
+    ],
     "no-useless-escape": "warn",
-    "valid-typeof": "warn",
-    "no-func-assign": "warn",
-    "no-cond-assign": ["warn", "except-parens"]
-  }
+    "valid-typeof": "error",
+    "no-func-assign": "error",
+    "no-cond-assign": ["error", "except-parens"],
+    "prefer-const": "error",
+    "no-var": "error",
+    "semi": ["error", "always"],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "indent": ["error", 2]
+  },
+  "overrides": [
+    {
+      "files": ["test/**/*.js", "**/*.spec.js", "**/*.test.js"],
+      "rules": {
+        "no-unused-expressions": "off"
+      }
+    }
+  ]
 }

@@ -18,7 +18,7 @@ describe('Endpoints de Refeição (unitários)', () => {
       .post('/foods')
       .set('Authorization', `Bearer ${token}`)
       .send({ name: 'Arroz', category: 'Cereal', calories: 130 });
-  foodId = foodRes.body.id;
+    foodId = foodRes.body.id;
   });
 
   it('deve criar uma refeição', async () => {

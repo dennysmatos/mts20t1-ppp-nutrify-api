@@ -1,22 +1,10 @@
 import http from 'k6/http';
 import { check, group, sleep } from 'k6';
 import { Trend } from 'k6/metrics';
+import * as faker from 'k6/x/faker';
 import { generateRandomEmail } from './helpers/generateRandomEmail.js';
 import { getBaseUrl } from './helpers/getBaseUrl.js';
 
-/**
- * Configuração do teste de performance
- *
- * Este teste simula um fluxo realista:
- * 1. Registro de novo usuário com email aleatório
- * 2. Login do usuário registrado
- * 3. Criação de alimento autenticado
- *
- * O teste passa quando:
- * - Percentil 95 de latência fica abaixo de 2 segundos (Threshold)
- * - Todos os checks de status code passam
- * - Nenhuma erro crítico ocorre
- */
 export const options = {
   // Stages define um ramp-up gradual de usuários virtuais
   // Isso simula um aumento gradual de carga em vez de picos repentinos
@@ -33,60 +21,26 @@ export const options = {
   },
 };
 
-/**
- * Métrica customizada (Trend) para monitorar especificamente
- * o tempo de resposta do endpoint POST /foods
- * Permite análise detalhada de desempenho por funcionalidade
- */
 const foodCreateDuration = new Trend('food_create_duration');
 
-/**
- * Dados para Data-Driven Testing
- * Array com diferentes combinações de dados para testar variações
- * Simula diferentes tipos de usuários e alimentos
- */
-const testDataVariations = [
-  {
-    foodName: 'Banana',
-    category: 'Fruta',
-    calories: 89,
-    protein: 1.1,
-    carbs: 23,
-    fat: 0.3,
-  },
-  {
-    foodName: 'Frango Grelhado',
-    category: 'Proteína',
-    calories: 165,
-    protein: 31,
-    carbs: 0,
-    fat: 3.6,
-  },
-  {
-    foodName: 'Arroz Integral',
-    category: 'Carboidrato',
-    calories: 111,
-    protein: 2.6,
-    carbs: 23,
-    fat: 0.9,
-  },
+const foodCategories = [
+  'Fruta',
+  'Proteína',
+  'Carboidrato',
+  'Legume',
+  'Laticinío',
+  'Grão',
+  'Óleo',
+  'Bebida',
 ];
 
 export default function () {
   const baseUrl = getBaseUrl();
   const email = generateRandomEmail();
   const password = 'password123';
-  const name = 'Test User';
+  const fakeGen = new faker.Faker();
+  const name = fakeGen.person.firstName();
 
-  /**
-   * GROUP: Registro de Usuário
-   *
-   * Simula o fluxo de novo usuário na aplicação.
-   * Email é gerado aleatoriamente para garantir unicidade (requisito da API).
-   *
-   * Check validado:
-   * - Status code 201: Confirma que o usuário foi criado com sucesso
-   */
   group('User Registration', () => {
     const payload = JSON.stringify({
       name: name,
@@ -110,20 +64,6 @@ export default function () {
   // Pausa para simular comportamento humano realista
   sleep(1);
 
-  /**
-   * GROUP: Login de Usuário
-   *
-   * Autentica o usuário registrado na etapa anterior.
-   * Extrai o token JWT da resposta para reutilização na próxima etapa.
-   *
-   * Checks validados:
-   * - Status code 200: Autenticação bem-sucedida
-   * - Token presente na resposta: Confirma que JWT foi retornado
-   *
-   * Reaproveitamento de Resposta:
-   * O token extraído é armazenado em variável para uso na autenticação
-   * das requisições subsequentes que exigem Bearer token.
-   */
   let token;
   group('User Login', () => {
     const payload = JSON.stringify({
@@ -151,34 +91,23 @@ export default function () {
   // Pausa para simular comportamento humano realista
   sleep(1);
 
-  /**
-   * GROUP: Criação de Alimentos (Data-Driven Testing)
-   *
-   * Testa a criação de múltiplos alimentos com diferentes dados.
-   * Implementa Data-Driven Testing iterando sobre variações de dados.
-   *
-   * Característica: Uso de Autenticação JWT
-   * O header Authorization com "Bearer <token>" autentica a requisição,
-   * demonstrando integração com sistema de segurança da API.
-   *
-   * Métricas (Trend):
-   * foodCreateDuration monitora especificamente o tempo de resposta
-   * do endpoint POST /foods, permitindo análise granular por funcionalidade.
-   *
-   * Check validado:
-   * - Status code 201: Confirma que o alimento foi criado com sucesso
-   */
-  // eslint-disable-next-line no-undef
-  const selectedFood = testDataVariations[__VU % testDataVariations.length];
+  const foodData = {
+    foodName: fakeGen.word.noun() + ' ' + fakeGen.word.noun(),
+    category: foodCategories[Math.floor(Math.random() * foodCategories.length)],
+    calories: Math.floor(Math.random() * 450) + 50,
+    protein: parseFloat((Math.random() * 35).toFixed(1)),
+    carbs: parseFloat((Math.random() * 80).toFixed(1)),
+    fat: parseFloat((Math.random() * 20).toFixed(1)),
+  };
 
   group('Food Creation', () => {
     const payload = JSON.stringify({
-      name: selectedFood.foodName,
-      category: selectedFood.category,
-      calories: selectedFood.calories,
-      protein: selectedFood.protein,
-      carbs: selectedFood.carbs,
-      fat: selectedFood.fat,
+      name: foodData.foodName,
+      category: foodData.category,
+      calories: foodData.calories,
+      protein: foodData.protein,
+      carbs: foodData.carbs,
+      fat: foodData.fat,
     });
 
     const params = {

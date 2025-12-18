@@ -5,9 +5,9 @@
     "passes": 22,
     "pending": 0,
     "failures": 0,
-    "start": "2025-12-17T19:53:32.060Z",
-    "end": "2025-12-17T19:53:35.637Z",
-    "duration": 3577,
+    "start": "2025-12-18T12:40:25.065Z",
+    "end": "2025-12-18T12:40:28.185Z",
+    "duration": 3120,
     "testsRegistered": 22,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "b4854bc6-0283-4e23-800d-6e6439171905",
+      "uuid": "f389a3d7-8b4c-446c-8cb9-bf13aa517aa8",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "f4c8edb7-83c9-4c84-b415-692406c7b849",
+          "uuid": "3e247eb2-ef56-42f7-ae1a-0854b96a8a5a",
           "title": "Casos funcionais negativos extras (pt-BR)",
           "fullFile": "/Users/dennysmatos/Projects/julio-de-lima/mts20t1-ppp-nutrify-api/test/functional/extra-negative.spec.js",
           "file": "/test/functional/extra-negative.spec.js",
@@ -45,8 +45,8 @@
               "context": null,
               "code": "reset()",
               "err": {},
-              "uuid": "6176d228-3d0f-4db9-977a-7427efd1908a",
-              "parentUUID": "f4c8edb7-83c9-4c84-b415-692406c7b849",
+              "uuid": "294d9257-ba61-4ab2-8b0e-18ad2c0f49fa",
+              "parentUUID": "3e247eb2-ef56-42f7-ae1a-0854b96a8a5a",
               "isHook": true,
               "skipped": false
             }
@@ -66,8 +66,8 @@
               "context": null,
               "code": "const res = await request(app).post('/users/register').send({ name: 123, email: 'a@b.com', password: '123456' });\nexpect(res.status).to.equal(400);",
               "err": {},
-              "uuid": "9ed15843-91b2-4b30-8796-14b3b84bedba",
-              "parentUUID": "f4c8edb7-83c9-4c84-b415-692406c7b849",
+              "uuid": "dce2b4e5-aa0b-4802-92aa-01f9a0cd2a8c",
+              "parentUUID": "3e247eb2-ef56-42f7-ae1a-0854b96a8a5a",
               "isHook": false,
               "skipped": false
             },
@@ -75,7 +75,7 @@
               "title": "retorna 400 ao criar alimento com calories nulo",
               "fullTitle": "Casos funcionais negativos extras (pt-BR) retorna 400 ao criar alimento com calories nulo",
               "timedOut": false,
-              "duration": 242,
+              "duration": 205,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -84,8 +84,8 @@
               "context": null,
               "code": "await request(app).post('/users/register').send({ name: 'A', email: 'a2@b.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'a2@b.com', password: '123456' });\nconst token = login.body.token;\nconst res = await request(app).post('/foods').set('Authorization', `Bearer ${token}`).send({ name: 'X', calories: null });\nexpect(res.status).to.equal(400);",
               "err": {},
-              "uuid": "3c3cd453-fb7b-455e-a179-25b47125a2a1",
-              "parentUUID": "f4c8edb7-83c9-4c84-b415-692406c7b849",
+              "uuid": "d9a8b139-707e-4285-aac3-5d9ceb50ae32",
+              "parentUUID": "3e247eb2-ef56-42f7-ae1a-0854b96a8a5a",
               "isHook": false,
               "skipped": false
             },
@@ -93,7 +93,7 @@
               "title": "retorna 400 ao criar refeição com array vazio de foods",
               "fullTitle": "Casos funcionais negativos extras (pt-BR) retorna 400 ao criar refeição com array vazio de foods",
               "timedOut": false,
-              "duration": 232,
+              "duration": 184,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -102,8 +102,8 @@
               "context": null,
               "code": "await request(app).post('/users/register').send({ name: 'B', email: 'b@b.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'b@b.com', password: '123456' });\nconst token = login.body.token;\n  const res = await request(app).post('/meals').set('Authorization', `Bearer ${token}`).send({ foods: [] });\nexpect(res.status).to.equal(400);",
               "err": {},
-              "uuid": "971bf8dd-36fc-46f3-b743-7174d88e1be5",
-              "parentUUID": "f4c8edb7-83c9-4c84-b415-692406c7b849",
+              "uuid": "9cc54dc3-fb34-4e24-b3d6-69cac5f394d4",
+              "parentUUID": "3e247eb2-ef56-42f7-ae1a-0854b96a8a5a",
               "isHook": false,
               "skipped": false
             },
@@ -111,7 +111,7 @@
               "title": "retorna 401 ao acessar rota protegida com token inválido",
               "fullTitle": "Casos funcionais negativos extras (pt-BR) retorna 401 ao acessar rota protegida com token inválido",
               "timedOut": false,
-              "duration": 10,
+              "duration": 6,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -120,8 +120,8 @@
               "context": null,
               "code": "const res = await request(app).post('/foods').set('Authorization', 'Bearer invalid.token').send({ name: 'Z', calories: 10 });\nexpect(res.status).to.equal(401);",
               "err": {},
-              "uuid": "93ac3b5d-8bac-46da-a6b5-a13adc843bae",
-              "parentUUID": "f4c8edb7-83c9-4c84-b415-692406c7b849",
+              "uuid": "0e8ce862-dad1-4d9a-bc40-4f957d867b53",
+              "parentUUID": "3e247eb2-ef56-42f7-ae1a-0854b96a8a5a",
               "isHook": false,
               "skipped": false
             },
@@ -129,7 +129,7 @@
               "title": "retorna 400 ao atualizar alimento com campo extra inesperado",
               "fullTitle": "Casos funcionais negativos extras (pt-BR) retorna 400 ao atualizar alimento com campo extra inesperado",
               "timedOut": false,
-              "duration": 204,
+              "duration": 183,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -138,30 +138,30 @@
               "context": null,
               "code": "await request(app).post('/users/register').send({ name: 'C', email: 'c@c.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'c@c.com', password: '123456' });\nconst token = login.body.token;\nconst f = await request(app).post('/foods').set('Authorization', `Bearer ${token}`).send({ name: 'Y', calories: 20 });\nconst id = f.body.id;\nconst res = await request(app).put(`/foods/${id}`).set('Authorization', `Bearer ${token}`).send({ name: 'Y', calories: 22, unexpected: true });\nexpect(res.status).to.equal(400);",
               "err": {},
-              "uuid": "6816b194-b61c-4f0a-85f2-d65e892ac4fb",
-              "parentUUID": "f4c8edb7-83c9-4c84-b415-692406c7b849",
+              "uuid": "ea7f067a-9d94-4580-851c-3696397f7150",
+              "parentUUID": "3e247eb2-ef56-42f7-ae1a-0854b96a8a5a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "9ed15843-91b2-4b30-8796-14b3b84bedba",
-            "3c3cd453-fb7b-455e-a179-25b47125a2a1",
-            "971bf8dd-36fc-46f3-b743-7174d88e1be5",
-            "93ac3b5d-8bac-46da-a6b5-a13adc843bae",
-            "6816b194-b61c-4f0a-85f2-d65e892ac4fb"
+            "dce2b4e5-aa0b-4802-92aa-01f9a0cd2a8c",
+            "d9a8b139-707e-4285-aac3-5d9ceb50ae32",
+            "9cc54dc3-fb34-4e24-b3d6-69cac5f394d4",
+            "0e8ce862-dad1-4d9a-bc40-4f957d867b53",
+            "ea7f067a-9d94-4580-851c-3696397f7150"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 731,
+          "duration": 621,
           "root": false,
           "rootEmpty": false,
           "_timeout": 5000
         },
         {
-          "uuid": "e923e46a-666e-475e-82c0-067c0f3f3aac",
+          "uuid": "a9918e16-0f90-4428-b414-66c8aec26f36",
           "title": "Endpoints de Alimentos (funcional)",
           "fullFile": "/Users/dennysmatos/Projects/julio-de-lima/mts20t1-ppp-nutrify-api/test/functional/food.spec.js",
           "file": "/test/functional/food.spec.js",
@@ -170,7 +170,7 @@
               "title": "\"before each\" hook in \"Endpoints de Alimentos (funcional)\"",
               "fullTitle": "Endpoints de Alimentos (funcional) \"before each\" hook in \"Endpoints de Alimentos (funcional)\"",
               "timedOut": false,
-              "duration": 2,
+              "duration": 3,
               "state": null,
               "speed": null,
               "pass": false,
@@ -179,8 +179,8 @@
               "context": null,
               "code": "reset()",
               "err": {},
-              "uuid": "6c55246f-e35d-46a2-9a59-70bc804a9ce8",
-              "parentUUID": "e923e46a-666e-475e-82c0-067c0f3f3aac",
+              "uuid": "a10acbb4-9653-4312-8f58-939797dd05fb",
+              "parentUUID": "a9918e16-0f90-4428-b414-66c8aec26f36",
               "isHook": true,
               "skipped": false
             }
@@ -191,7 +191,7 @@
               "title": "deve criar um alimento",
               "fullTitle": "Endpoints de Alimentos (funcional) deve criar um alimento",
               "timedOut": false,
-              "duration": 240,
+              "duration": 176,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -200,26 +200,26 @@
               "context": null,
               "code": "await request(app).post('/users/register').send({ name: 'Food', email: 'f@example.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'f@example.com', password: '123456' });\nconst token = login.body.token;\nconst res = await request(app)\n  .post('/foods')\n  .set('Authorization', `Bearer ${token}`)\n  .send({ name: 'Banana', category: 'Fruta', calories: 89 });\nexpect(res.status).to.equal(201);\nexpect(res.body).to.have.property('id');\nexpect(res.body).to.have.property('createdAt');\nexpect(res.body).to.have.property('updatedAt');",
               "err": {},
-              "uuid": "f17f651b-f049-459b-8db5-85d8d0001ebf",
-              "parentUUID": "e923e46a-666e-475e-82c0-067c0f3f3aac",
+              "uuid": "bef2d52f-aa21-4320-9e14-fe9cf06e801a",
+              "parentUUID": "a9918e16-0f90-4428-b414-66c8aec26f36",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "f17f651b-f049-459b-8db5-85d8d0001ebf"
+            "bef2d52f-aa21-4320-9e14-fe9cf06e801a"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 240,
+          "duration": 176,
           "root": false,
           "rootEmpty": false,
           "_timeout": 5000
         },
         {
-          "uuid": "af44fcbe-7094-4c4f-9f69-f7a692366fc8",
+          "uuid": "3e1eaf8e-ee1f-4fe3-b77a-27465365ffda",
           "title": "Endpoints de Refeição (funcional)",
           "fullFile": "/Users/dennysmatos/Projects/julio-de-lima/mts20t1-ppp-nutrify-api/test/functional/meal.spec.js",
           "file": "/test/functional/meal.spec.js",
@@ -227,64 +227,6 @@
             {
               "title": "\"before each\" hook in \"Endpoints de Refeição (funcional)\"",
               "fullTitle": "Endpoints de Refeição (funcional) \"before each\" hook in \"Endpoints de Refeição (funcional)\"",
-              "timedOut": false,
-              "duration": 1,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "reset()",
-              "err": {},
-              "uuid": "319a995a-6a42-45fd-94a0-fb7924748c5f",
-              "parentUUID": "af44fcbe-7094-4c4f-9f69-f7a692366fc8",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [],
-          "tests": [
-            {
-              "title": "deve criar uma refeição e computar totais",
-              "fullTitle": "Endpoints de Refeição (funcional) deve criar uma refeição e computar totais",
-              "timedOut": false,
-              "duration": 227,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "await request(app).post('/users/register').send({ name: 'M', email: 'm@example.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'm@example.com', password: '123456' });\nconst token = login.body.token;\nconst foodRes = await request(app)\n  .post('/foods')\n  .set('Authorization', `Bearer ${token}`)\n  .send({ name: 'Apple', calories: 52, protein: 0.3, carbs: 14, fat: 0.2 });\nconst foodId = foodRes.body.id;\nconst res = await request(app)\n  .post('/meals')\n  .set('Authorization', `Bearer ${token}`)\n  .send({ foods: [foodId] });\nexpect(res.status).to.equal(201);\nexpect(res.body).to.have.property('totalCalories');\nexpect(res.body.totalCalories).to.equal(52);",
-              "err": {},
-              "uuid": "d525cb58-49b4-4b17-80d2-d2f6d76c9894",
-              "parentUUID": "af44fcbe-7094-4c4f-9f69-f7a692366fc8",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "d525cb58-49b4-4b17-80d2-d2f6d76c9894"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 227,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 5000
-        },
-        {
-          "uuid": "043d755f-2e0b-4411-970f-47e169adc139",
-          "title": "Testes funcionais negativos / validação",
-          "fullFile": "/Users/dennysmatos/Projects/julio-de-lima/mts20t1-ppp-nutrify-api/test/functional/negative.spec.js",
-          "file": "/test/functional/negative.spec.js",
-          "beforeHooks": [
-            {
-              "title": "\"before each\" hook in \"Testes funcionais negativos / validação\"",
-              "fullTitle": "Testes funcionais negativos / validação \"before each\" hook in \"Testes funcionais negativos / validação\"",
               "timedOut": false,
               "duration": 2,
               "state": null,
@@ -295,8 +237,66 @@
               "context": null,
               "code": "reset()",
               "err": {},
-              "uuid": "b8aab17b-3b0f-40f7-a2e6-75f194718a95",
-              "parentUUID": "043d755f-2e0b-4411-970f-47e169adc139",
+              "uuid": "f7c5fc84-72ff-4762-a065-aecc37e4b5ea",
+              "parentUUID": "3e1eaf8e-ee1f-4fe3-b77a-27465365ffda",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "deve criar uma refeição e computar totais",
+              "fullTitle": "Endpoints de Refeição (funcional) deve criar uma refeição e computar totais",
+              "timedOut": false,
+              "duration": 180,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await request(app).post('/users/register').send({ name: 'M', email: 'm@example.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'm@example.com', password: '123456' });\nconst token = login.body.token;\nconst foodRes = await request(app)\n  .post('/foods')\n  .set('Authorization', `Bearer ${token}`)\n  .send({ name: 'Apple', calories: 52, protein: 0.3, carbs: 14, fat: 0.2 });\nconst foodId = foodRes.body.id;\nconst res = await request(app)\n  .post('/meals')\n  .set('Authorization', `Bearer ${token}`)\n  .send({ foods: [foodId] });\nexpect(res.status).to.equal(201);\nexpect(res.body).to.have.property('totalCalories');\nexpect(res.body.totalCalories).to.equal(52);",
+              "err": {},
+              "uuid": "8f8c70f1-16dc-4d04-9a47-ccb6119b0c4c",
+              "parentUUID": "3e1eaf8e-ee1f-4fe3-b77a-27465365ffda",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8f8c70f1-16dc-4d04-9a47-ccb6119b0c4c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 180,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 5000
+        },
+        {
+          "uuid": "b96ed391-0191-47f6-9011-cedf62f6f300",
+          "title": "Testes funcionais negativos / validação",
+          "fullFile": "/Users/dennysmatos/Projects/julio-de-lima/mts20t1-ppp-nutrify-api/test/functional/negative.spec.js",
+          "file": "/test/functional/negative.spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Testes funcionais negativos / validação\"",
+              "fullTitle": "Testes funcionais negativos / validação \"before each\" hook in \"Testes funcionais negativos / validação\"",
+              "timedOut": false,
+              "duration": 1,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "reset()",
+              "err": {},
+              "uuid": "c4e39e6c-c7fa-44be-80b9-279db132c7c5",
+              "parentUUID": "b96ed391-0191-47f6-9011-cedf62f6f300",
               "isHook": true,
               "skipped": false
             }
@@ -305,7 +305,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "f0cec324-130a-4f82-83c8-6cec27c2e8f5",
+              "uuid": "15113eb1-fd0a-4c3e-b498-8ce7f177fbf8",
               "title": "Validação de usuários e erros de autenticação",
               "fullFile": "/Users/dennysmatos/Projects/julio-de-lima/mts20t1-ppp-nutrify-api/test/functional/negative.spec.js",
               "file": "/test/functional/negative.spec.js",
@@ -316,7 +316,7 @@
                   "title": "retorna 400 ao registrar sem senha",
                   "fullTitle": "Testes funcionais negativos / validação Validação de usuários e erros de autenticação retorna 400 ao registrar sem senha",
                   "timedOut": false,
-                  "duration": 7,
+                  "duration": 4,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -325,8 +325,8 @@
                   "context": null,
                   "code": "const res = await request(app).post('/users/register').send({ name: 'NoPass', email: 'nopass@example.com' });\nexpect(res.status).to.equal(400);\nexpect(res.body).to.have.property('errors').that.is.an('array');",
                   "err": {},
-                  "uuid": "6d5eb88e-4f0b-40c9-85e4-6340e6b8cae7",
-                  "parentUUID": "f0cec324-130a-4f82-83c8-6cec27c2e8f5",
+                  "uuid": "94c8f94d-c318-4f45-86c0-2fd49c79c86b",
+                  "parentUUID": "15113eb1-fd0a-4c3e-b498-8ce7f177fbf8",
                   "isHook": false,
                   "skipped": false
                 },
@@ -343,8 +343,8 @@
                   "context": null,
                   "code": "const res = await request(app).post('/users/register').send({ name: '', email: 'blank@example.com', password: '123456' });\nexpect(res.status).to.equal(400);\nexpect(res.body).to.have.property('errors');",
                   "err": {},
-                  "uuid": "838e9a1c-66e9-450d-a4b4-8b784322933d",
-                  "parentUUID": "f0cec324-130a-4f82-83c8-6cec27c2e8f5",
+                  "uuid": "1d4b0fc3-3a67-4da8-b466-04a38ad3d378",
+                  "parentUUID": "15113eb1-fd0a-4c3e-b498-8ce7f177fbf8",
                   "isHook": false,
                   "skipped": false
                 },
@@ -352,7 +352,7 @@
                   "title": "retorna 401 ao autenticar com credenciais incorretas",
                   "fullTitle": "Testes funcionais negativos / validação Validação de usuários e erros de autenticação retorna 401 ao autenticar com credenciais incorretas",
                   "timedOut": false,
-                  "duration": 183,
+                  "duration": 170,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -361,28 +361,28 @@
                   "context": null,
                   "code": "await request(app).post('/users/register').send({ name: 'Login', email: 'login@example.com', password: 'correct' });\nconst res = await request(app).post('/users/login').send({ email: 'login@example.com', password: 'wrong' });\nexpect(res.status).to.equal(401);\nexpect(res.body).to.have.property('error');",
                   "err": {},
-                  "uuid": "399a5e9e-6fea-43a4-89eb-48861212b1b6",
-                  "parentUUID": "f0cec324-130a-4f82-83c8-6cec27c2e8f5",
+                  "uuid": "8bd48e8b-3b7c-4f17-b409-1dcf034d14ed",
+                  "parentUUID": "15113eb1-fd0a-4c3e-b498-8ce7f177fbf8",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "6d5eb88e-4f0b-40c9-85e4-6340e6b8cae7",
-                "838e9a1c-66e9-450d-a4b4-8b784322933d",
-                "399a5e9e-6fea-43a4-89eb-48861212b1b6"
+                "94c8f94d-c318-4f45-86c0-2fd49c79c86b",
+                "1d4b0fc3-3a67-4da8-b466-04a38ad3d378",
+                "8bd48e8b-3b7c-4f17-b409-1dcf034d14ed"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 194,
+              "duration": 178,
               "root": false,
               "rootEmpty": false,
               "_timeout": 5000
             },
             {
-              "uuid": "19895e12-855f-47e9-8c68-66c6c4c3a7f0",
+              "uuid": "65fd195f-fb74-45e3-b21b-fbad1190a066",
               "title": "Validação de alimentos e autenticação",
               "fullFile": "/Users/dennysmatos/Projects/julio-de-lima/mts20t1-ppp-nutrify-api/test/functional/negative.spec.js",
               "file": "/test/functional/negative.spec.js",
@@ -402,8 +402,8 @@
                   "context": null,
                   "code": "const res = await request(app).post('/foods').send({ name: 'NoAuth', calories: 10 });\nexpect(res.status).to.equal(401);\nexpect(res.body).to.have.property('error');",
                   "err": {},
-                  "uuid": "e7d0a2c2-787d-46e6-85be-7866f4103022",
-                  "parentUUID": "19895e12-855f-47e9-8c68-66c6c4c3a7f0",
+                  "uuid": "0d644c72-53f4-4748-a75a-fea9d5d55a6d",
+                  "parentUUID": "65fd195f-fb74-45e3-b21b-fbad1190a066",
                   "isHook": false,
                   "skipped": false
                 },
@@ -411,7 +411,7 @@
                   "title": "retorna 400 ao criar alimento sem nome",
                   "fullTitle": "Testes funcionais negativos / validação Validação de alimentos e autenticação retorna 400 ao criar alimento sem nome",
                   "timedOut": false,
-                  "duration": 187,
+                  "duration": 174,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -420,8 +420,8 @@
                   "context": null,
                   "code": "await request(app).post('/users/register').send({ name: 'F', email: 'f2@example.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'f2@example.com', password: '123456' });\nconst token = login.body.token;\nconst res = await request(app).post('/foods').set('Authorization', `Bearer ${token}`).send({ calories: 10 });\nexpect(res.status).to.equal(400);\nexpect(res.body).to.have.property('errors');",
                   "err": {},
-                  "uuid": "260146c3-44a2-41df-a5bc-31b4ce020da3",
-                  "parentUUID": "19895e12-855f-47e9-8c68-66c6c4c3a7f0",
+                  "uuid": "0fe1ddb3-b4fd-46c1-9694-6b9add7099a0",
+                  "parentUUID": "65fd195f-fb74-45e3-b21b-fbad1190a066",
                   "isHook": false,
                   "skipped": false
                 },
@@ -429,7 +429,7 @@
                   "title": "retorna 400 quando calories tem tipo errado",
                   "fullTitle": "Testes funcionais negativos / validação Validação de alimentos e autenticação retorna 400 quando calories tem tipo errado",
                   "timedOut": false,
-                  "duration": 196,
+                  "duration": 170,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -438,8 +438,8 @@
                   "context": null,
                   "code": "await request(app).post('/users/register').send({ name: 'F', email: 'f3@example.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'f3@example.com', password: '123456' });\nconst token = login.body.token;\nconst res = await request(app).post('/foods').set('Authorization', `Bearer ${token}`).send({ name: 'Apple', calories: 'not-a-number' });\nexpect(res.status).to.equal(400);\nexpect(res.body).to.have.property('errors');",
                   "err": {},
-                  "uuid": "c1b3240f-6a85-4d8c-8745-a3c5c0cfb3b7",
-                  "parentUUID": "19895e12-855f-47e9-8c68-66c6c4c3a7f0",
+                  "uuid": "a17b91b8-bcb4-4d35-827f-06c9a47aad4f",
+                  "parentUUID": "65fd195f-fb74-45e3-b21b-fbad1190a066",
                   "isHook": false,
                   "skipped": false
                 },
@@ -447,7 +447,7 @@
                   "title": "retorna 403 quando usuário não-admin tenta atualizar alimento",
                   "fullTitle": "Testes funcionais negativos / validação Validação de alimentos e autenticação retorna 403 quando usuário não-admin tenta atualizar alimento",
                   "timedOut": false,
-                  "duration": 378,
+                  "duration": 339,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -456,29 +456,29 @@
                   "context": null,
                   "code": "// first register admin (first user is admin)\nawait request(app).post('/users/register').send({ name: 'Admin', email: 'admin@example.com', password: '123456' });\n// create another normal user\nawait request(app).post('/users/register').send({ name: 'User', email: 'user@example.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'user@example.com', password: '123456' });\nconst token = login.body.token;\n// admin creates food\nconst adminLogin = await request(app).post('/users/login').send({ email: 'admin@example.com', password: '123456' });\nconst adminToken = adminLogin.body.token;\nconst created = await request(app).post('/foods').set('Authorization', `Bearer ${adminToken}`).send({ name: 'Milk', calories: 42 });\nconst id = created.body.id;\n// non-admin tries to update\nconst res = await request(app).put(`/foods/${id}`).set('Authorization', `Bearer ${token}`).send({ name: 'Milk', calories: 50 });\nexpect(res.status).to.equal(403);\nexpect(res.body).to.have.property('error');",
                   "err": {},
-                  "uuid": "8620c957-d089-403f-b049-fbacc9a6c86b",
-                  "parentUUID": "19895e12-855f-47e9-8c68-66c6c4c3a7f0",
+                  "uuid": "01a7867c-4478-4c78-9b1c-46fcb5a25f51",
+                  "parentUUID": "65fd195f-fb74-45e3-b21b-fbad1190a066",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "e7d0a2c2-787d-46e6-85be-7866f4103022",
-                "260146c3-44a2-41df-a5bc-31b4ce020da3",
-                "c1b3240f-6a85-4d8c-8745-a3c5c0cfb3b7",
-                "8620c957-d089-403f-b049-fbacc9a6c86b"
+                "0d644c72-53f4-4748-a75a-fea9d5d55a6d",
+                "0fe1ddb3-b4fd-46c1-9694-6b9add7099a0",
+                "a17b91b8-bcb4-4d35-827f-06c9a47aad4f",
+                "01a7867c-4478-4c78-9b1c-46fcb5a25f51"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 764,
+              "duration": 686,
               "root": false,
               "rootEmpty": false,
               "_timeout": 5000
             },
             {
-              "uuid": "172004b3-7ef2-471b-ba3e-6fd4d130d4ae",
+              "uuid": "c9787013-4200-49a2-b86c-e06a1b45b58a",
               "title": "Validação de refeições e erros de negócio",
               "fullFile": "/Users/dennysmatos/Projects/julio-de-lima/mts20t1-ppp-nutrify-api/test/functional/negative.spec.js",
               "file": "/test/functional/negative.spec.js",
@@ -489,7 +489,7 @@
                   "title": "retorna 400 ao criar refeição sem lista de alimentos",
                   "fullTitle": "Testes funcionais negativos / validação Validação de refeições e erros de negócio retorna 400 ao criar refeição sem lista de alimentos",
                   "timedOut": false,
-                  "duration": 191,
+                  "duration": 174,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -498,8 +498,8 @@
                   "context": null,
                   "code": "await request(app).post('/users/register').send({ name: 'M', email: 'm2@example.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'm2@example.com', password: '123456' });\nconst token = login.body.token;\n\n  const res = await request(app).post('/meals').set('Authorization', `Bearer ${token}`).send({ });\nexpect(res.status).to.equal(400);\nexpect(res.body).to.have.property('errors');",
                   "err": {},
-                  "uuid": "faabbaa9-4b9e-4312-8068-c43c0b405cf2",
-                  "parentUUID": "172004b3-7ef2-471b-ba3e-6fd4d130d4ae",
+                  "uuid": "3d36382d-7832-4ea6-a2e4-84ddbeb47e5f",
+                  "parentUUID": "c9787013-4200-49a2-b86c-e06a1b45b58a",
                   "isHook": false,
                   "skipped": false
                 },
@@ -507,7 +507,7 @@
                   "title": "retorna 400 quando foods não é um array",
                   "fullTitle": "Testes funcionais negativos / validação Validação de refeições e erros de negócio retorna 400 quando foods não é um array",
                   "timedOut": false,
-                  "duration": 186,
+                  "duration": 169,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -516,8 +516,8 @@
                   "context": null,
                   "code": "await request(app).post('/users/register').send({ name: 'M', email: 'm3@example.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'm3@example.com', password: '123456' });\nconst token = login.body.token;\n\n  const res = await request(app).post('/meals').set('Authorization', `Bearer ${token}`).send({ foods: 'not-an-array' });\nexpect(res.status).to.equal(400);\nexpect(res.body).to.have.property('errors');",
                   "err": {},
-                  "uuid": "0a433903-5487-49d8-beea-f3f10fb2fdbc",
-                  "parentUUID": "172004b3-7ef2-471b-ba3e-6fd4d130d4ae",
+                  "uuid": "799da743-6591-432c-9e9b-cb89e547a2c5",
+                  "parentUUID": "c9787013-4200-49a2-b86c-e06a1b45b58a",
                   "isHook": false,
                   "skipped": false
                 },
@@ -525,7 +525,7 @@
                   "title": "retorna 400 quando refeição referencia id de alimento inexistente",
                   "fullTitle": "Testes funcionais negativos / validação Validação de refeições e erros de negócio retorna 400 quando refeição referencia id de alimento inexistente",
                   "timedOut": false,
-                  "duration": 181,
+                  "duration": 170,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -534,22 +534,22 @@
                   "context": null,
                   "code": "await request(app).post('/users/register').send({ name: 'M', email: 'm4@example.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'm4@example.com', password: '123456' });\nconst token = login.body.token;\n\n  const res = await request(app).post('/meals').set('Authorization', `Bearer ${token}`).send({ foods: ['non-existing-id'] });\nexpect(res.status).to.equal(400);\nexpect(res.body).to.have.property('error');",
                   "err": {},
-                  "uuid": "be277e36-244c-47b8-a953-2ce061d3d76b",
-                  "parentUUID": "172004b3-7ef2-471b-ba3e-6fd4d130d4ae",
+                  "uuid": "584559bf-478f-41f4-af53-b97dfc8126d9",
+                  "parentUUID": "c9787013-4200-49a2-b86c-e06a1b45b58a",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "faabbaa9-4b9e-4312-8068-c43c0b405cf2",
-                "0a433903-5487-49d8-beea-f3f10fb2fdbc",
-                "be277e36-244c-47b8-a953-2ce061d3d76b"
+                "3d36382d-7832-4ea6-a2e4-84ddbeb47e5f",
+                "799da743-6591-432c-9e9b-cb89e547a2c5",
+                "584559bf-478f-41f4-af53-b97dfc8126d9"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 558,
+              "duration": 513,
               "root": false,
               "rootEmpty": false,
               "_timeout": 5000
@@ -565,7 +565,7 @@
           "_timeout": 5000
         },
         {
-          "uuid": "afb2c92e-15f3-4678-997b-084fc2b3a929",
+          "uuid": "355b17e3-152c-418c-8fd4-e27305abf322",
           "title": "Validação strict (funcional)",
           "fullFile": "/Users/dennysmatos/Projects/julio-de-lima/mts20t1-ppp-nutrify-api/test/functional/strict.spec.js",
           "file": "/test/functional/strict.spec.js",
@@ -574,7 +574,7 @@
               "title": "\"before each\" hook in \"Validação strict (funcional)\"",
               "fullTitle": "Validação strict (funcional) \"before each\" hook in \"Validação strict (funcional)\"",
               "timedOut": false,
-              "duration": 3,
+              "duration": 1,
               "state": null,
               "speed": null,
               "pass": false,
@@ -583,8 +583,8 @@
               "context": null,
               "code": "reset()",
               "err": {},
-              "uuid": "af8170ce-e391-4033-bf18-7622b7d20d63",
-              "parentUUID": "afb2c92e-15f3-4678-997b-084fc2b3a929",
+              "uuid": "69f8fbd9-6f2e-4516-a333-ea048f9bd57f",
+              "parentUUID": "355b17e3-152c-418c-8fd4-e27305abf322",
               "isHook": true,
               "skipped": false
             }
@@ -595,7 +595,7 @@
               "title": "POST /users/register rejeita campos extras",
               "fullTitle": "Validação strict (funcional) POST /users/register rejeita campos extras",
               "timedOut": false,
-              "duration": 2,
+              "duration": 3,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -604,8 +604,8 @@
               "context": null,
               "code": "const res = await request(app).post('/users/register').send({ name: 'X', email: 'x@example.com', password: '123456', extra: 'no' });\nexpect(res.status).to.equal(400);\nexpect(res.body).to.have.property('error');",
               "err": {},
-              "uuid": "0c3b5901-3363-44bd-b1e6-4a1a75308b43",
-              "parentUUID": "afb2c92e-15f3-4678-997b-084fc2b3a929",
+              "uuid": "90e96a90-9c6f-4cfe-ae52-31275f5892c4",
+              "parentUUID": "355b17e3-152c-418c-8fd4-e27305abf322",
               "isHook": false,
               "skipped": false
             },
@@ -613,7 +613,7 @@
               "title": "POST /foods rejects extra fields",
               "fullTitle": "Validação strict (funcional) POST /foods rejects extra fields",
               "timedOut": false,
-              "duration": 177,
+              "duration": 170,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -622,27 +622,27 @@
               "context": null,
               "code": "await request(app).post('/users/register').send({ name: 'F', email: 'f@example.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'f@example.com', password: '123456' });\nconst token = login.body.token;\nconst res = await request(app)\n  .post('/foods')\n  .set('Authorization', `Bearer ${token}`)\n  .send({ name: 'Banana', calories: 89, extra: 'no' });\nexpect(res.status).to.equal(400);\nexpect(res.body).to.have.property('error');",
               "err": {},
-              "uuid": "8b5d325d-16ac-4e9b-9aec-961976d3add3",
-              "parentUUID": "afb2c92e-15f3-4678-997b-084fc2b3a929",
+              "uuid": "a3d90388-56a1-4156-aeec-21d4f12e3d05",
+              "parentUUID": "355b17e3-152c-418c-8fd4-e27305abf322",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "0c3b5901-3363-44bd-b1e6-4a1a75308b43",
-            "8b5d325d-16ac-4e9b-9aec-961976d3add3"
+            "90e96a90-9c6f-4cfe-ae52-31275f5892c4",
+            "a3d90388-56a1-4156-aeec-21d4f12e3d05"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 179,
+          "duration": 173,
           "root": false,
           "rootEmpty": false,
           "_timeout": 5000
         },
         {
-          "uuid": "c5337893-e2fd-4e78-85de-46f3cbe27c82",
+          "uuid": "60e210b2-8883-4438-b048-1fbef0bddf9a",
           "title": "Validação strict em atualização (funcional)",
           "fullFile": "/Users/dennysmatos/Projects/julio-de-lima/mts20t1-ppp-nutrify-api/test/functional/strict_update.spec.js",
           "file": "/test/functional/strict_update.spec.js",
@@ -660,8 +660,8 @@
               "context": null,
               "code": "reset()",
               "err": {},
-              "uuid": "31115025-f82c-4486-ae53-88d851991ec4",
-              "parentUUID": "c5337893-e2fd-4e78-85de-46f3cbe27c82",
+              "uuid": "969d2078-a1fa-489d-acbb-a5af2c2c2a07",
+              "parentUUID": "60e210b2-8883-4438-b048-1fbef0bddf9a",
               "isHook": true,
               "skipped": false
             }
@@ -672,7 +672,7 @@
               "title": "PUT /foods/:id rejeita campos extras",
               "fullTitle": "Validação strict em atualização (funcional) PUT /foods/:id rejeita campos extras",
               "timedOut": false,
-              "duration": 183,
+              "duration": 179,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -681,8 +681,8 @@
               "context": null,
               "code": "await request(app).post('/users/register').send({ name: 'U', email: 'u@example.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'u@example.com', password: '123456' });\nconst token = login.body.token;\nconst create = await request(app)\n  .post('/foods')\n  .set('Authorization', `Bearer ${token}`)\n  .send({ name: 'Orange', calories: 47 });\nconst id = create.body.id;\nconst res = await request(app)\n  .put(`/foods/${id}`)\n  .set('Authorization', `Bearer ${token}`)\n  .send({ name: 'Orange', calories: 50, extra: 'no' });\nexpect(res.status).to.equal(400);\nexpect(res.body).to.have.property('error');",
               "err": {},
-              "uuid": "b7a04043-dc3f-48aa-b4ae-fdaeccb05760",
-              "parentUUID": "c5337893-e2fd-4e78-85de-46f3cbe27c82",
+              "uuid": "faa398ba-3cad-4c10-ac61-9fe1da8e2fc0",
+              "parentUUID": "60e210b2-8883-4438-b048-1fbef0bddf9a",
               "isHook": false,
               "skipped": false
             },
@@ -690,7 +690,7 @@
               "title": "PUT /meals/:id rejects extra fields",
               "fullTitle": "Validação strict em atualização (funcional) PUT /meals/:id rejects extra fields",
               "timedOut": false,
-              "duration": 278,
+              "duration": 189,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -699,27 +699,27 @@
               "context": null,
               "code": "await request(app).post('/users/register').send({ name: 'V', email: 'v@example.com', password: '123456' });\nconst login = await request(app).post('/users/login').send({ email: 'v@example.com', password: '123456' });\nconst token = login.body.token;\nconst foodRes = await request(app)\n  .post('/foods')\n  .set('Authorization', `Bearer ${token}`)\n  .send({ name: 'Pear', calories: 57 });\nconst foodId = foodRes.body.id;\nconst mealRes = await request(app)\n  .post('/meals')\n  .set('Authorization', `Bearer ${token}`)\n  .send({ foods: [foodId] });\nconst mealId = mealRes.body.id;\nconst res = await request(app)\n  .put(`/meals/${mealId}`)\n  .set('Authorization', `Bearer ${token}`)\n  .send({ date: new Date().toISOString(), foods: [foodId], extra: 'no' });\nexpect(res.status).to.equal(400);\nexpect(res.body).to.have.property('error');",
               "err": {},
-              "uuid": "3369dc4a-dfb8-45fb-8c80-b2b9b07f0036",
-              "parentUUID": "c5337893-e2fd-4e78-85de-46f3cbe27c82",
+              "uuid": "8d8fecb3-b473-4ba5-a5e4-37f78f295fc0",
+              "parentUUID": "60e210b2-8883-4438-b048-1fbef0bddf9a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "b7a04043-dc3f-48aa-b4ae-fdaeccb05760",
-            "3369dc4a-dfb8-45fb-8c80-b2b9b07f0036"
+            "faa398ba-3cad-4c10-ac61-9fe1da8e2fc0",
+            "8d8fecb3-b473-4ba5-a5e4-37f78f295fc0"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 461,
+          "duration": 368,
           "root": false,
           "rootEmpty": false,
           "_timeout": 5000
         },
         {
-          "uuid": "f8bff2a9-39b3-43ed-aa03-37e46cd373e2",
+          "uuid": "8f06f186-da70-435b-9af7-585c29b5dce5",
           "title": "Endpoints de Usuário (funcional)",
           "fullFile": "/Users/dennysmatos/Projects/julio-de-lima/mts20t1-ppp-nutrify-api/test/functional/user.spec.js",
           "file": "/test/functional/user.spec.js",
@@ -737,8 +737,8 @@
               "context": null,
               "code": "reset()",
               "err": {},
-              "uuid": "682321fb-d85a-4065-8c52-098a558fdf49",
-              "parentUUID": "f8bff2a9-39b3-43ed-aa03-37e46cd373e2",
+              "uuid": "b8d7b56d-3f00-4dd2-a3be-c3e5ab941b3d",
+              "parentUUID": "8f06f186-da70-435b-9af7-585c29b5dce5",
               "isHook": true,
               "skipped": false
             }
@@ -749,7 +749,7 @@
               "title": "deve registrar e autenticar um usuário",
               "fullTitle": "Endpoints de Usuário (funcional) deve registrar e autenticar um usuário",
               "timedOut": false,
-              "duration": 168,
+              "duration": 166,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -758,20 +758,20 @@
               "context": null,
               "code": "const res1 = await request(app).post('/users/register').send({ name: 'User', email: 'u@example.com', password: '123456' });\nexpect(res1.status).to.equal(201);\nexpect(res1.body).to.have.property('id');\nconst res2 = await request(app).post('/users/login').send({ email: 'u@example.com', password: '123456' });\nexpect(res2.status).to.equal(200);\nexpect(res2.body).to.have.property('token');",
               "err": {},
-              "uuid": "a0f62f3c-1780-4323-ad49-1cc72cb9ed48",
-              "parentUUID": "f8bff2a9-39b3-43ed-aa03-37e46cd373e2",
+              "uuid": "f7f806fd-9c77-4ece-a153-de75c00a41d8",
+              "parentUUID": "8f06f186-da70-435b-9af7-585c29b5dce5",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "a0f62f3c-1780-4323-ad49-1cc72cb9ed48"
+            "f7f806fd-9c77-4ece-a153-de75c00a41d8"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 168,
+          "duration": 166,
           "root": false,
           "rootEmpty": false,
           "_timeout": 5000

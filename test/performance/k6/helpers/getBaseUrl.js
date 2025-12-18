@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * Obtém a URL base da API a partir de variáveis de ambiente
  * @returns {string} URL base da API
@@ -5,3 +6,4 @@
 export function getBaseUrl() {
   return __ENV.BASE_URL || 'http://localhost:3000';
 }
+/* eslint-enable no-undef */

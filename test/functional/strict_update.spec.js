@@ -7,8 +7,12 @@ describe('Validação strict em atualização (funcional)', function () {
   beforeEach(() => reset());
 
   it('PUT /foods/:id rejeita campos extras', async () => {
-    await request(app).post('/users/register').send({ name: 'U', email: 'u@example.com', password: '123456' });
-    const login = await request(app).post('/users/login').send({ email: 'u@example.com', password: '123456' });
+    await request(app)
+      .post('/users/register')
+      .send({ name: 'U', email: 'u@example.com', password: '123456' });
+    const login = await request(app)
+      .post('/users/login')
+      .send({ email: 'u@example.com', password: '123456' });
     const token = login.body.token;
 
     const create = await request(app)
@@ -26,8 +30,12 @@ describe('Validação strict em atualização (funcional)', function () {
   });
 
   it('PUT /meals/:id rejects extra fields', async () => {
-    await request(app).post('/users/register').send({ name: 'V', email: 'v@example.com', password: '123456' });
-    const login = await request(app).post('/users/login').send({ email: 'v@example.com', password: '123456' });
+    await request(app)
+      .post('/users/register')
+      .send({ name: 'V', email: 'v@example.com', password: '123456' });
+    const login = await request(app)
+      .post('/users/login')
+      .send({ email: 'v@example.com', password: '123456' });
     const token = login.body.token;
 
     const foodRes = await request(app)

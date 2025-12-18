@@ -6,17 +6,24 @@ describe('Strict validation rejects extra fields', () => {
   beforeAll(() => reset());
 
   test('POST /users/register rejects extra fields', async () => {
-    const res = await request(app)
-      .post('/users/register')
-      .send({ name: 'X', email: 'x@example.com', password: '123456', extra: 'no' });
+    const res = await request(app).post('/users/register').send({
+      name: 'X',
+      email: 'x@example.com',
+      password: '123456',
+      extra: 'no',
+    });
     expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty('error');
   });
 
   test('POST /foods rejects extra fields', async () => {
     // create and login a user to get token
-    await request(app).post('/users/register').send({ name: 'F', email: 'f@example.com', password: '123456' });
-    const login = await request(app).post('/users/login').send({ email: 'f@example.com', password: '123456' });
+    await request(app)
+      .post('/users/register')
+      .send({ name: 'F', email: 'f@example.com', password: '123456' });
+    const login = await request(app)
+      .post('/users/login')
+      .send({ email: 'f@example.com', password: '123456' });
     const token = login.body.token;
 
     const res = await request(app)
@@ -29,8 +36,12 @@ describe('Strict validation rejects extra fields', () => {
 
   test('POST /meals rejects extra fields', async () => {
     // create and login a user
-    await request(app).post('/users/register').send({ name: 'M', email: 'm@example.com', password: '123456' });
-    const login = await request(app).post('/users/login').send({ email: 'm@example.com', password: '123456' });
+    await request(app)
+      .post('/users/register')
+      .send({ name: 'M', email: 'm@example.com', password: '123456' });
+    const login = await request(app)
+      .post('/users/login')
+      .send({ email: 'm@example.com', password: '123456' });
     const token = login.body.token;
 
     // create a food
