@@ -101,7 +101,7 @@ food_create_duration: avg=35.59ms  min=3.97ms  max=232.09ms  p(95)=135.72ms
 
 Permite análise granular de performance por endpoint.
 
-### 5. Geração de Dados (Faker Pattern)
+### 5. Faker (Faker Pattern)
 
 O teste implementa padrão similar a bibliotecas Faker:
 
@@ -109,16 +109,24 @@ O teste implementa padrão similar a bibliotecas Faker:
 - **Data-Driven Testing**: Array `testDataVariations` com múltiplos alimentos
 
 ```javascript
-const testDataVariations = [
-  { foodName: 'Banana', calories: 89, ... },
-  { foodName: 'Frango', calories: 165, ... },
-  { foodName: 'Arroz', calories: 111, ... },
-];
+import * as faker from 'k6/x/faker';
 
-const selectedFood = testDataVariations[__VU % testDataVariations.length];
+export default function () {
+  ...
+  const fakeGen = new faker.Faker();
+  const name = fakeGen.person.firstName();
+  ...
+}
+
+group('User Registration', () => {
+  const payload = JSON.stringify({
+    name: name,
+    email: email,
+    password: password,
+  });
+...
+  }
 ```
-
-Cada VU (Virtual User) recebe um alimento diferente, testando variações de dados.
 
 ### 6. Variáveis de Ambiente
 
