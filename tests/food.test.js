@@ -21,6 +21,6 @@ describe('Food Endpoints', () => {
       .set('Authorization', `Bearer ${token}`)
       .send({ name: 'Banana', category: 'Fruta', calories: 89 });
     expect(res.statusCode).toEqual(201);
-  expect(res.body).toHaveProperty('id');
+    expect(res.body).toHaveProperty('id');
   });
 });

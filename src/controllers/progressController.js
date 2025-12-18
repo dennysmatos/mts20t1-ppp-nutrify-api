@@ -13,5 +13,3 @@ exports.getDaily = async (req, res, next) => {
     next(err);
   }
 };
-
-

@@ -17,18 +17,25 @@ describe('Meal Endpoints', () => {
     const foodRes = await request(app)
       .post('/foods')
       .set('Authorization', `Bearer ${token}`)
-      .send({ name: 'Arroz', category: 'Cereal', calories: 130 });
-  foodId = foodRes.body.id;
+      .send({
+        name: 'Arroz',
+        category: 'Cereal',
+        calories: 130,
+        protein: 2.7,
+        carbs: 28,
+        fat: 0.3,
+      });
+    foodId = foodRes.body.id;
   });
 
   it('should create a meal', async () => {
     const res = await request(app)
       .post('/meals')
       .set('Authorization', `Bearer ${token}`)
-      .send({ date: new Date(), foods: [foodId] });
+      .send({ foods: [foodId] });
     expect(res.statusCode).toEqual(201);
-  expect(res.body).toHaveProperty('id');
-  expect(res.body).toHaveProperty('totalCalories');
-  expect(res.body.totalCalories).toBeGreaterThan(0);
+    expect(res.body).toHaveProperty('id');
+    expect(res.body).toHaveProperty('totalCalories');
+    expect(res.body.totalCalories).toBeGreaterThan(0);
   });
 });

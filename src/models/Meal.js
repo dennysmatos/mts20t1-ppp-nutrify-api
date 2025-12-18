@@ -7,7 +7,7 @@ const MealSchema = new mongoose.Schema({
   totalCalories: { type: Number, default: 0 },
   totalProtein: { type: Number, default: 0 },
   totalCarbs: { type: Number, default: 0 },
-  totalFat: { type: Number, default: 0 }
+  totalFat: { type: Number, default: 0 },
 });
 
 module.exports = mongoose.model('Meal', MealSchema);

@@ -7,8 +7,12 @@ describe('Endpoints de Refeição (funcional)', function () {
   beforeEach(() => reset());
 
   it('deve criar uma refeição e computar totais', async () => {
-    await request(app).post('/users/register').send({ name: 'M', email: 'm@example.com', password: '123456' });
-    const login = await request(app).post('/users/login').send({ email: 'm@example.com', password: '123456' });
+    await request(app)
+      .post('/users/register')
+      .send({ name: 'M', email: 'm@example.com', password: '123456' });
+    const login = await request(app)
+      .post('/users/login')
+      .send({ email: 'm@example.com', password: '123456' });
     const token = login.body.token;
 
     const foodRes = await request(app)

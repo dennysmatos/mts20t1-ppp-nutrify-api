@@ -7,8 +7,12 @@ describe('Endpoints de Alimentos (funcional)', function () {
   beforeEach(() => reset());
 
   it('deve criar um alimento', async () => {
-    await request(app).post('/users/register').send({ name: 'Food', email: 'f@example.com', password: '123456' });
-    const login = await request(app).post('/users/login').send({ email: 'f@example.com', password: '123456' });
+    await request(app)
+      .post('/users/register')
+      .send({ name: 'Food', email: 'f@example.com', password: '123456' });
+    const login = await request(app)
+      .post('/users/login')
+      .send({ email: 'f@example.com', password: '123456' });
     const token = login.body.token;
 
     const res = await request(app)

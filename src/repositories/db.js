@@ -39,21 +39,35 @@ ensureDataDir();
 const db = {
   users: toMap(readJson(USERS_FILE)),
   foods: toMap(readJson(FOODS_FILE)),
-  meals: toMap(readJson(MEALS_FILE))
+  meals: toMap(readJson(MEALS_FILE)),
 };
 
-function persistUsers() { writeJson(USERS_FILE, Array.from(db.users.values())); }
-function persistFoods() { writeJson(FOODS_FILE, Array.from(db.foods.values())); }
-function persistMeals() { writeJson(MEALS_FILE, Array.from(db.meals.values())); }
+function persistUsers() {
+  writeJson(USERS_FILE, Array.from(db.users.values()));
+}
+function persistFoods() {
+  writeJson(FOODS_FILE, Array.from(db.foods.values()));
+}
+function persistMeals() {
+  writeJson(MEALS_FILE, Array.from(db.meals.values()));
+}
 
-function generateId() { return uuidv4(); }
+function generateId() {
+  return uuidv4();
+}
 
 // Users
 const UserRepo = {
   create: async (data) => {
     const id = generateId();
     const now = new Date().toISOString();
-    const user = { ...data, role: data.role || 'user', id, createdAt: now, updatedAt: now };
+    const user = {
+      ...data,
+      role: data.role || 'user',
+      id,
+      createdAt: now,
+      updatedAt: now,
+    };
     db.users.set(id, user);
     persistUsers();
     return user;
@@ -72,7 +86,7 @@ const UserRepo = {
     db.users.set(id, updated);
     persistUsers();
     return updated;
-  }
+  },
 };
 
 // Foods
@@ -100,7 +114,7 @@ const FoodRepo = {
     const res = db.foods.delete(id);
     persistFoods();
     return res;
-  }
+  },
 };
 
 // Meals
@@ -114,7 +128,8 @@ const MealRepo = {
     return meal;
   },
   findAll: async () => Array.from(db.meals.values()),
-  findByUserId: async (userId) => Array.from(db.meals.values()).filter(m => m.user === userId),
+  findByUserId: async (userId) =>
+    Array.from(db.meals.values()).filter((m) => m.user === userId),
   findById: async (id) => db.meals.get(id) || null,
   update: async (id, data) => {
     const existing = db.meals.get(id);
@@ -129,7 +144,7 @@ const MealRepo = {
     const res = db.meals.delete(id);
     persistMeals();
     return res;
-  }
+  },
 };
 
 function reset() {
@@ -142,4 +157,3 @@ function reset() {
 }
 
 module.exports = { UserRepo, FoodRepo, MealRepo, reset };
-
