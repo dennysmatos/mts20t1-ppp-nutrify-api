@@ -23,10 +23,12 @@ npm run test:functional
 ```
 
 Relatórios gerados:
+
 - `reports/mocha/mochawesome.html` (relatório visual mochawesome — contém títulos em pt-BR)
 - `junit.xml` gerado pelo jest-junit na raiz (quando configurado)
 
 Padronização:
+
 - Mensagens de teste e descrições estão em Português (pt-BR).
 - Code style: ESLint + Prettier. Execute `npm run lint` e `npm run prettier` antes de abrir PR.
 

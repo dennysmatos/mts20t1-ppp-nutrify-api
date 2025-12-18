@@ -88,19 +88,29 @@ paths:
         - name: sortBy
           in: query
           required: false
-          description: "Campo para ordenação (padrão: name)"
+          description: 'Campo para ordenação (padrão: name)'
           schema:
             type: string
-            enum: [name, category, calories, protein, carbs, fat, createdAt, updatedAt]
-          example: "name"
+            enum:
+              [
+                name,
+                category,
+                calories,
+                protein,
+                carbs,
+                fat,
+                createdAt,
+                updatedAt,
+              ]
+          example: 'name'
         - name: order
           in: query
           required: false
-          description: "Direção da ordenação (padrão: asc)"
+          description: 'Direção da ordenação (padrão: asc)'
           schema:
             type: string
             enum: [asc, desc]
-          example: "asc"
+          example: 'asc'
       responses:
         '200':
           description: Lista de alimentos
@@ -198,7 +208,7 @@ paths:
           description: ID do usuário (apenas para administradores)
           schema:
             type: string
-          example: "user-123"
+          example: 'user-123'
       responses:
         '200':
           description: Lista de refeições
@@ -271,18 +281,18 @@ paths:
         - name: date
           in: query
           required: false
-          description: "Data no formato YYYY-MM-DD (padrão: hoje)"
+          description: 'Data no formato YYYY-MM-DD (padrão: hoje)'
           schema:
             type: string
             format: date
-          example: "2025-01-20"
+          example: '2025-01-20'
         - name: userId
           in: query
           required: false
           description: ID do usuário (apenas para administradores)
           schema:
             type: string
-          example: "user-123"
+          example: 'user-123'
       responses:
         '200':
           description: Progresso diário calculado
@@ -347,13 +357,13 @@ components:
           type: string
           format: date-time
       example:
-        id: "user-1"
-        name: "João da Silva"
-        email: "joao@example.com"
-        role: "user"
+        id: 'user-1'
+        name: 'João da Silva'
+        email: 'joao@example.com'
+        role: 'user'
         calorieGoal: 2000
-        createdAt: "2025-08-19T12:00:00.000Z"
-        updatedAt: "2025-08-19T12:00:00.000Z"
+        createdAt: '2025-08-19T12:00:00.000Z'
+        updatedAt: '2025-08-19T12:00:00.000Z'
     Food:
       type: object
       properties:
@@ -378,15 +388,15 @@ components:
           type: string
           format: date-time
       example:
-        id: "food-1"
-        name: "Banana"
-        category: "Fruta"
+        id: 'food-1'
+        name: 'Banana'
+        category: 'Fruta'
         calories: 89
         protein: 1.1
         carbs: 23
         fat: 0.3
-        createdAt: "2025-08-19T12:00:00.000Z"
-        updatedAt: "2025-08-19T12:00:00.000Z"
+        createdAt: '2025-08-19T12:00:00.000Z'
+        updatedAt: '2025-08-19T12:00:00.000Z'
     Meal:
       type: object
       properties:
@@ -414,15 +424,15 @@ components:
           type: string
           format: date-time
       example:
-        id: "meal-1"
-        date: "2025-08-19T18:30:00.000Z"
-        foods: ["food-1"]
+        id: 'meal-1'
+        date: '2025-08-19T18:30:00.000Z'
+        foods: ['food-1']
         totalCalories: 89
         totalProtein: 1.1
         totalCarbs: 23
         totalFat: 0.3
-        createdAt: "2025-08-19T18:30:00.000Z"
-        updatedAt: "2025-08-19T18:30:00.000Z"
+        createdAt: '2025-08-19T18:30:00.000Z'
+        updatedAt: '2025-08-19T18:30:00.000Z'
     MealCreate:
       type: object
       description: Payload para criação de refeição. Somente lista de IDs de alimentos é aceita; date e timestamps são gerados pelo servidor.
@@ -433,7 +443,7 @@ components:
             type: string
       required: [foods]
       example:
-        foods: ["food-1", "food-2"]
+        foods: ['food-1', 'food-2']
     MealUpdate:
       type: object
       description: Payload para atualização de refeição. Apenas o campo foods (array de ids) pode ser alterado; totals e updatedAt são recalculados pelo servidor.
@@ -443,7 +453,7 @@ components:
           items:
             type: string
       example:
-        foods: ["food-1"]
+        foods: ['food-1']
     FoodCreate:
       type: object
       properties:
@@ -460,8 +470,8 @@ components:
         fat:
           type: number
       example:
-        name: "Banana"
-        category: "Fruta"
+        name: 'Banana'
+        category: 'Fruta'
         calories: 89
         protein: 1.1
         carbs: 23
@@ -491,12 +501,12 @@ components:
           enum: [below, equal, above]
           description: Status do progresso (below = abaixo da meta, equal = exatamente na meta, above = acima da meta)
       example:
-        userId: "user-1"
-        date: "2025-01-20"
+        userId: 'user-1'
+        date: '2025-01-20'
         totalCalories: 1850
         calorieGoal: 2000
         difference: 150
-        status: "below"
+        status: 'below'
   responses:
     BadRequest:
       description: Requisição inválida
